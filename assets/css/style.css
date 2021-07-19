@@ -70,7 +70,6 @@ textarea{
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
-  background-image: linear-gradient(45deg, rgb(0 0%, 255, 255) 100%);
   transition: all .5s ease-out;
 }
 
