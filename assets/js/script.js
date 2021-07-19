@@ -3,7 +3,7 @@ var dayIncrement = 0;
 var hour = moment().hours();
 
 function displayDay() {
-    $(document).ready(function() {
+    $(document).ready(function () {
         // dispplay current day
         var dayFormat = (moment().add(dayIncrement, 'd')).format("MMMM Do, dddd YYYY");
         $("#currentDay").text(dayFormat);
@@ -55,10 +55,10 @@ function displayDay() {
             // time block generate hour textarea and save button 
             $('#container').append(timeBlock);
             var taskHour = $("<div>").addClass("col-1 hour").text(tempusId);
-            var taskArea = $("<textarea>").addClass("col-10 task").attr("id", i);
+            var taskText = $("<textarea>").addClass("col-10 task").attr("id", i);
             var taskSave = $("<button>").addClass("col-1 saveBtn").append('<i class="fas fa-save">');
 
-            $(strId).append(taskHour, taskArea, taskSave);
+            $(strId).append(taskHour, taskText, taskSave);
         };
         // save button
         $(".saveBtn").click(function () {
@@ -67,7 +67,21 @@ function displayDay() {
             arrOne[time - 9] = task;
             //save data as key,value: dayyear, array of tasks per hour
             localStorage.setItem(taskDayFormat, JSON.stringify(arrOne));
-        });  
+        });
+
+        function displayTasks() {
+            var taskDayFormat = (moment().add(dayIncrement, 'd')).format("DDDDYYYY");
+            var taskArr = JSON.parse(localStorage.getItem(taskDayFormat));
+            if (taskArr) {
+                for (let i = 0; i < taskArr.length; i++) {
+                    var taskId = ('#' + i);
+                    var taskText = taskArr[i];
+                    $(taskId).text(taskText);
+                };
+            };
+        };
+
+        // call function displayTasks
         displayTasks();
     });
 };
@@ -75,16 +89,3 @@ function displayDay() {
 displayDay();
 
 
-
-function displayTasks() {
-    var taskDayFormat = (moment().add(dayIncrement, 'd')).format("DDDDYYYY");
-    var taskArr = JSON.parse(localStorage.getItem(taskDayFormat));
-    //parse out the tasks for the day
-    if (taskArr) {
-        for (let i = 0; i < taskArr.length; i++) {
-            var taskId = ('#' + i);
-            var taskText = taskArr[i];
-            $(taskId).text(taskText);
-        };
-    };
-};
