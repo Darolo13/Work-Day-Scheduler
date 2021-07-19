@@ -15,6 +15,9 @@ function displayDay() {
         } else {
             var arrOne = [];
         };
+
+
+
         $('body').append(
             $('<div>').prop({ id: "container", className: "container" })
         );
