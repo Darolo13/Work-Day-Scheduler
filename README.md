@@ -29,6 +29,7 @@ Ready Features:
 ## Screenshot
 ### Work Day Scheduler:
 ![Initial-display](./assets/screenshots/principal.png)
+![Initial-display](./assets/screenshots/second.png)
 
 ## Project Status
 Project is: _in progress_
