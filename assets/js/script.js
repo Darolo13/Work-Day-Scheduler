@@ -4,7 +4,7 @@ var hour = moment().hours();
 
 function displayDay() {
     $(document).ready(function () {
-        // dispplay current day
+        // display current day
         var dayFormat = (moment().add(dayIncrement, 'd')).format("MMMM Do, dddd YYYY");
         $("#currentDay").text(dayFormat);
         var taskDayFormat = (moment().add(dayIncrement, 'd')).format("DDDDYYYY");
@@ -17,13 +17,13 @@ function displayDay() {
         $('body').append(
             $('<div>').prop({ id: "container", className: "container" })
         );
-        //setup container 
+        // container 
         var hourEl = document.getElementById("container");
-        //remove any existing tasks
+        // remove existing tasks
         while (hourEl.hasChildNodes()) {
             hourEl.removeChild(hourEl.firstChild);
         };
-        //setup time-blocks hour info
+        // time block information
         for (let i = 0; i < 9; i++) {
             integerId = (i + 9);
             strId = ('#' + integerId);
@@ -65,7 +65,7 @@ function displayDay() {
             var time = $(this).parent().attr("id");
             var task = $(this).siblings(".task").val();
             arrOne[time - 9] = task;
-            //save data as key,value: dayyear, array of tasks per hour
+            // save data as a unified string 
             localStorage.setItem(taskDayFormat, JSON.stringify(arrOne));
         });
 
