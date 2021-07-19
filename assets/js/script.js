@@ -2,6 +2,7 @@ var day = (moment().format("DDDDYYYY"));
 var dayIncrement = 0;
 var hour = moment().hours();
 
+// it will display the current date and append container div
 function displayDay() {
     $(document).ready(function () {
         // display current day
@@ -36,7 +37,7 @@ function displayDay() {
                 tempusId = tempusId + "AM";
             };
             var timeBlock = $("<div>")
-                .addClass("row time-block")
+                .addClass("row time-block mt-auto")
                 .attr("id", integerId);
             //color logic
             if (dayIncrement < 0) {
